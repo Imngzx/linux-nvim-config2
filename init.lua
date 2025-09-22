@@ -20,9 +20,6 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-vim.cmd([[highlight BufferLineFill guibg=NONE ctermbg=NONE]])
-vim.cmd([[highlight BufferLineBackground guibg=NONE ctermbg=NONE]])
-
 --NOTE:   if you use neovide
 if vim.g.neovide then
   vim.o.guifont = "JetBrainsMono Nerd Font:h14:b" -- Replace h14 with your desired font size
