@@ -17,6 +17,7 @@ local M = {
       toml = { "taplo" },
       cmake = { "cmake_format" },
       json = { "jq" },
+      ["markdown"] = { "markdownlint-cli2" },
       ["*"] = { "codespell" },
       ["_"] = { "trim_whitespace" },
     },
