@@ -112,22 +112,13 @@ return {
               },
             },
           },
-          -- ruff = {
-          --   cmd_env = { RUFF_TRACE = "messages" },
-          --   init_options = {
-          --     settings = {
-          --       logLevel = "error",
-          --     },
-          --   },
-          --   keys = {
-          --     {
-          --       "<leader>co",
-          --       LazyVim.lsp.action["source.organizeImports"],
-          --       desc = "Organize Imports",
-          --     },
-          --   },
-          -- },
-          ruff_lsp = {
+          ruff = {
+            cmd_env = { RUFF_TRACE = "messages" },
+            init_options = {
+              settings = {
+                logLevel = "error",
+              },
+            },
             keys = {
               {
                 "<leader>co",
@@ -177,11 +168,6 @@ return {
               "--completion-style=detailed",
               "--function-arg-placeholders",
               "--fallback-style=llvm",
-              "--query-driver=/usr/bin/**/clang-*,/bin/clang,/bin/clang++,/usr/bin/gcc,/usr/bin/g++",
-              --
-              --NOTE:: if using Windows, enable cl.exe related by "uncomment" it
-
-              -- "--query-driver=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/*/bin/Hostx64/x64/cl.exe",
             },
             init_options = {
               usePlaceholders = true,
@@ -193,13 +179,6 @@ return {
               },
             },
           },
-          -- setup = {
-          --   clangd = function(_, opts)
-          --     local clangd_ext_opts = LazyVim.opts("clangd_extensions.nvim")
-          --     require("clangd_extensions").setup(vim.tbl_deep_extend("force", clangd_ext_opts or {}, { server = opts }))
-          --     return false
-          --   end,
-          -- },
         },
         -- you can do any additional lsp server setup here
         -- return true if you don't want this server to be setup with lspconfig
