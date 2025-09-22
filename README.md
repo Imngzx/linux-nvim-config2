@@ -12,18 +12,15 @@ A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
 
 Also remember to install fd,luarocks, lua and xclip find via:
 
-On linux
-- sudo dnf install
-- sudo apt install
+On linux:
 
-On windows
-- choco install fd
+- sudo dnf install gcc g++ make treesitter-cli git nvim fd-find ripgrep python3
 
 > [!NOTE]
 > This is for linux
 
 ```sh
-  git clone https://github.com/Imngzx/linux-nvim-config.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+  git clone https://github.com/Imngzx/linux-nvim-config2.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 
 ```
 
@@ -31,6 +28,5 @@ On windows
 > This is for windows
 
 ```sh
-git clone https://github.com/Imngzx/linux-nvim-config.git "${env:LOCALAPPDATA}\nvim"
+git clone https://github.com/Imngzx/linux-nvim-config2.git "${env:LOCALAPPDATA}\nvim"
 ```
-

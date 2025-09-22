@@ -32,6 +32,8 @@ return {
         "cmakelang",
         "cmakelint",
         "codespell",
+        "taplo",
+        "json-lsp",
       },
     },
 

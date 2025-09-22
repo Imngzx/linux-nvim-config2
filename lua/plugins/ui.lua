@@ -133,17 +133,16 @@ return {
       }
       --
       -- show filetype in lualine_x
-      opts.sections.lualine_x = {
+      opts.sections.lualine_x = {}
+      opts.sections.lualine_y = {
+        -- {
+        --   "filetype",
+        --   icons_enabled = true,
+        -- },
         {
           "lsp_status",
           icons_enabled = true,
           icon = " ",
-        },
-      }
-      opts.sections.lualine_y = {
-        {
-          "filetype",
-          icons_enabled = true,
         },
       }
       -- show date + 12-hour clock in lualine_z
