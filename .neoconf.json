@@ -11,11 +11,5 @@
         "enabled": true
       }
     }
-  },
-  "lazydev": {
-    "library": {
-      "enabled": true,
-      "plugins": true
-    }
   }
 }

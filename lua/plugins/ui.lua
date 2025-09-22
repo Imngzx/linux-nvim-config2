@@ -133,7 +133,11 @@ return {
       }
       --
       -- show filetype in lualine_x
-      opts.sections.lualine_x = {}
+      opts.sections.lualine_x = {
+        {
+          "encoding",
+        },
+      }
       opts.sections.lualine_y = {
         -- {
         --   "filetype",
