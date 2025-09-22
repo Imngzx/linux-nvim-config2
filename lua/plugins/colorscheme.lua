@@ -15,6 +15,7 @@ return {
           transparent = true,
           solid = false,
         },
+        auto_integrations = true,
       })
     end,
     opts = {

@@ -68,8 +68,8 @@ return {
     event = "VeryLazy",
     opts = {
       options = {
-        mode = "buffers", --tabs
-        separator_style = "slant", --slope, slant
+        mode = "buffers",          --tabs
+        separator_style = "slope", --slope, slant
         show_buffer_close_icons = false,
         show_close_icon = false,
       },
@@ -335,12 +335,12 @@ return {
           local stats = require("lazy").stats()
           local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
           dashboard.section.footer.val = "⚡ Neovim loaded "
-            .. stats.loaded
-            .. "/"
-            .. stats.count
-            .. " plugins in "
-            .. ms
-            .. "ms"
+              .. stats.loaded
+              .. "/"
+              .. stats.count
+              .. " plugins in "
+              .. ms
+              .. "ms"
           pcall(vim.cmd.AlphaRedraw)
         end,
       })
