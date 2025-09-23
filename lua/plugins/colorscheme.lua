@@ -4,21 +4,17 @@ return {
     "catppuccin/nvim",
     lazy = true,
     name = "catppuccin",
-    colorscheme = function()
-      require("catppuccin").setup({
-        transparent_background = false,
-        background = {
-          light = "latte",
-          dark = "mocha",
-        },
-        float = {
-          transparent = true,
-          solid = false,
-        },
-        auto_integrations = true,
-      })
-    end,
     opts = {
+      transparent_background = false,
+      background = {
+        light = "latte",
+        dark = "mocha",
+      },
+      float = {
+        transparent = true,
+        solid = true,
+      },
+      auto_integrations = true,
       integrations = {
         lualine = true,
         aerial = true,
@@ -26,7 +22,6 @@ return {
         blink_cmp = {
           style = "bordered",
         },
-        cmp = true,
         dashboard = true,
         flash = true,
         fzf = true,
