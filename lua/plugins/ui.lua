@@ -257,6 +257,19 @@ return {
     },
   },
 
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("noice").setup({
+        presets = {
+          bottom_search = true,
+          long_message_to_split = true,
+        },
+      })
+    end,
+  },
+
   --NOTE: start screen config and also the key to back to dashboard
   {
     "goolord/alpha-nvim",

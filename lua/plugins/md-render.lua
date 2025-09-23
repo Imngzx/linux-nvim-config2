@@ -1,6 +1,9 @@
 return {
   {
     "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
     opts = {
       code = {
         sign = true,
@@ -12,11 +15,22 @@ return {
         icons = {},
         width = "block",
         left_pad = 2,
-        right_pad = 4
+        right_pad = 4,
       },
       checkbox = {
-        enabled = false,
+        enabled = true,
       },
+
+      latex = {
+        enabled = false,
+        render_modes = false,
+        converter = { "utftex", "latex2text" },
+        highlight = "RenderMarkdownMath",
+        position = "center",
+        top_pad = 0,
+        bottom_pad = 0,
+      },
+      completions = { lsp = { enabled = false } },
     },
     ft = { "markdown", "norg", "rmd", "org", "codecompanion" },
     config = function(_, opts)
