@@ -12,7 +12,7 @@ return {
       },
       float = {
         transparent = true,
-        solid = true,
+        solid = false,
       },
       auto_integrations = true,
       integrations = {
