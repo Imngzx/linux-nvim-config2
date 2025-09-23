@@ -95,6 +95,7 @@ return {
         --  - "round" : "" "" Will only work for default and minimal Statusline Theme
         --  - "block" : "█" "█" Will only work for default and minimal Statusline Theme
         --  - "arrow" : "" "" Will only work for default Statusline Theme
+        -- { left = '', right = '' },
         -- { left = '', right = '' }
       })
 
@@ -107,7 +108,7 @@ return {
           --   return str:sub(1, 1)
           -- end,
 
-          icon = "",
+          icon = "", -- 
           icons_enabled = true,
           padding = { left = 1, right = 1 },
         },
