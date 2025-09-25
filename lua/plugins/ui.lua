@@ -290,13 +290,13 @@ return {
         -- refer to the configuration section below
         enabled = true,
         animate = {
-          duration = { step = 15, total = 80 },
+          duration = { step = 15, total = 90 },
           easing = "inCubic",
           fps = 240,
         },
         animate_repeat = {
           delay = 50, -- delay in ms before using the repeat animation
-          duration = { step = 5, total = 80 },
+          duration = { step = 5, total = 90 },
           easing = "inCubic",
           fps = 240,
         },
