@@ -21,7 +21,7 @@ return {
       backends = { "lsp", "treesitter", "markdown", "man" },
       show_guides = true,
       layout = {
-        min_width = 50,
+        min_width = 40,
         resize_to_content = true,
         win_opts = {
           winhl = "Normal:NormalFloat,FloatBorder:NormalFloat,SignColumn:SignColumnSB",
