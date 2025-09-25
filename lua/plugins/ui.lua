@@ -140,6 +140,12 @@ return {
         {
           "diff",
         },
+        {
+          "location",
+        },
+        {
+          "progress",
+        },
       }
 
       -- keep pretty path
