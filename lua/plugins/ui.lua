@@ -88,8 +88,9 @@ return {
         -- theme = "palenight",
         theme = "catppuccin",
         section_separators = { left = "", right = "" }, --
-        component_separators = { left = "", right = "" },
+        component_separators = { left = " ", right = "" }, --
         always_divide_middle = true,
+        refresh_time = 16,
         -- Seperators :
         --  - default : "" "" Will only work for default Statusline Theme
         --  - "round" : "" "" Will only work for default and minimal Statusline Theme
@@ -120,23 +121,56 @@ return {
         },
       }
 
-      -- keep pretty path
-      opts.sections.lualine_c[4] = {
-        LazyVim.lualine.pretty_path({
-          length = 0,
-          relative = "cwd",
-          modified_hl = "MatchParen",
-          directory_hl = "",
-          filename_hl = "Bold",
-          modified_sign = "",
-          readonly_icon = " 󰌾 ",
-        }),
+      opts.sections.lualine_c = {
+        -- {
+        --   "filetype",
+        --   icon_only = true,
+        --   icon = { align = "right" },
+        -- },
+        {
+          "filename",
+          symbols = {
+            modified = "[+]", -- Text to show when the file is modified.
+            readonly = "[-]", -- Text to show when the file is non-modifiable or readonly.
+            unnamed = "[No Name]", -- Text to show for unnamed buffers.
+            newfile = "[New]",
+          },
+        },
+
+        {
+          "diff",
+        },
       }
+
+      -- keep pretty path
+      -- opts.sections.lualine_c[4] = {
+      --   LazyVim.lualine.pretty_path({
+      --     length = 0,
+      --     relative = "cwd",
+      --     modified_hl = "MatchParen",
+      --     directory_hl = "",
+      --     filename_hl = "Bold",
+      --     modified_sign = "",
+      --     readonly_icon = " 󰌾 ",
+      --   }),
+      -- }
       --
       -- show filetype in lualine_x
       opts.sections.lualine_x = {
         {
-          "encoding",
+          "diagnostics",
+
+          -- Table of diagnostic sources, available sources are:
+          --   'nvim_lsp', 'nvim_diagnostic', 'nvim_workspace_diagnostic', 'coc', 'ale', 'vim_lsp'.
+          -- or a function that returns a table as such:
+          --   { error=error_cnt, warn=warn_cnt, info=info_cnt, hint=hint_cnt }
+
+          -- Displays diagnostics for the defined severity types
+          sections = { "error", "warn", "info", "hint" },
+
+          colored = true, -- Displays diagnostics status in color if set to true.
+          update_in_insert = false, -- Update diagnostics in insert mode.
+          always_visible = false, -- Show diagnostics even if there are none.
         },
       }
       opts.sections.lualine_y = {
@@ -214,6 +248,19 @@ return {
     end,
   },
 
+  -- NOTE: the top >>> thingy
+  {
+    "bekaboo/dropbar.nvim",
+    event = "VeryLazy",
+
+    config = function()
+      local dropbar_api = require("dropbar.api")
+      vim.keymap.set("n", "<Leader>;", dropbar_api.pick, { desc = "Pick symbols in winbar" })
+      vim.keymap.set("n", "[;", dropbar_api.goto_context_start, { desc = "Go to start of current context" })
+      vim.keymap.set("n", "];", dropbar_api.select_next_context, { desc = "Select next context" })
+    end,
+  },
+
   --NOTE: scrolling config
   {
     "folke/snacks.nvim",
@@ -257,6 +304,7 @@ return {
     },
   },
 
+  --NOTE : cmd line appearance change
   {
     "folke/noice.nvim",
     event = "VeryLazy",
