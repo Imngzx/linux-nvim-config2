@@ -57,17 +57,17 @@ return {
         which_key = true,
       },
     },
-    specs = {
-      {
-        "akinsho/bufferline.nvim",
-        opts = function(_, opts)
-          local catppuccin = require("catppuccin.groups.integrations.bufferline")
-          if catppuccin and catppuccin.get then
-            opts.highlights = catppuccin.get()
-          end
-        end,
-      },
-    },
+    -- specs = {
+    --   {
+    --     "akinsho/bufferline.nvim",
+    --     opts = function(_, opts)
+    --       local catppuccin = require("catppuccin.groups.integrations.bufferline")
+    --       if catppuccin and catppuccin.get then
+    --         opts.highlights = catppuccin.get()
+    --       end
+    --     end,
+    --   },
+    -- },
   },
 
   -- NOTE: Rose pine
