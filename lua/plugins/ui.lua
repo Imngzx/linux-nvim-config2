@@ -295,6 +295,7 @@ return {
       indent = { enabled = true },
       quickfile = { enabled = true },
       scroll = {
+        debug = false,
         -- your scroll configuration comes here
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
@@ -311,6 +312,15 @@ return {
           fps = 240,
         },
       },
+    },
+  },
+
+  {
+    "folke/which-key.nvim",
+    lazy = true,
+    enabled = true,
+    opts = {
+      preset = "helix",
     },
   },
 
