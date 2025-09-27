@@ -86,7 +86,6 @@ return {
       -- ✅ Add your separators config
       opts.options = vim.tbl_deep_extend("force", opts.options or {}, {
         -- theme = "palenight",
-        theme = "catppuccin",
         section_separators = { left = "", right = "" }, --
         component_separators = { left = " ", right = "" }, --
         always_divide_middle = true,
@@ -139,6 +138,11 @@ return {
 
         {
           "diff",
+          symbols = {
+            added = " ",
+            modified = " ",
+            removed = " ",
+          },
         },
         -- {
         --   "location",

@@ -48,6 +48,8 @@ return {
       "vimdoc",
       "xml",
       "yaml",
+      "ninja",
+      "rst",
     },
   },
   ---@param opts lazyvim.TSConfig

@@ -112,6 +112,11 @@ return {
             },
           },
           ruff = {
+            capabilities = {
+              general = {
+                positionEncodings = { "utf-16" },
+              },
+            },
             cmd_env = { RUFF_TRACE = "messages" },
             init_options = {
               settings = {
@@ -191,7 +196,7 @@ return {
           end,
 
           opts = function(_, opts)
-            local servers = { "pyright", "basedpyright", "ruff", "ruff_lsp", ruff, lsp }
+            local servers = { "basedpyright", "ruff" }
             for _, server in ipairs(servers) do
               opts.servers[server] = opts.servers[server] or {}
               opts.servers[server].enabled = server == lsp or server == ruff
@@ -226,9 +231,9 @@ return {
       if opts.inlay_hints.enabled then
         LazyVim.lsp.on_supports_method("textDocument/inlayHint", function(client, buffer)
           if
-              vim.api.nvim_buf_is_valid(buffer)
-              and vim.bo[buffer].buftype == ""
-              and not vim.tbl_contains(opts.inlay_hints.exclude, vim.bo[buffer].filetype)
+            vim.api.nvim_buf_is_valid(buffer)
+            and vim.bo[buffer].buftype == ""
+            and not vim.tbl_contains(opts.inlay_hints.exclude, vim.bo[buffer].filetype)
           then
             vim.lsp.inlay_hint.enable(true, { bufnr = buffer })
           end
@@ -276,7 +281,7 @@ return {
       local have_mason = LazyVim.has("mason-lspconfig.nvim")
       local mason_all = have_mason
           and vim.tbl_keys(require("mason-lspconfig.mappings").get_mason_map().lspconfig_to_package)
-          or {} --[[ @as string[] ]]
+        or {} --[[ @as string[] ]]
 
       local exclude_automatic_enable = {} ---@type string[]
 
