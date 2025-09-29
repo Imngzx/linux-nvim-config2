@@ -68,7 +68,7 @@ return {
     event = "VeryLazy",
     opts = {
       options = {
-        mode = "buffers", --tabs
+        mode = "buffers",          --tabs
         separator_style = "slope", --slope, slant
         show_buffer_close_icons = false,
         show_close_icon = false,
@@ -87,7 +87,7 @@ return {
       opts.options = vim.tbl_deep_extend("force", opts.options or {}, {
         -- theme = "palenight",
         section_separators = { left = "", right = "" }, --
-        component_separators = { left = " ", right = "" }, --
+        component_separators = { left = " ", right = " " }, --
         always_divide_middle = true,
         refresh_time = 16,
         -- Seperators :
@@ -145,9 +145,6 @@ return {
           },
         },
         -- {
-        --   "location",
-        -- },
-        -- {
         --   "progress",
         -- },
       }
@@ -178,20 +175,23 @@ return {
           -- Displays diagnostics for the defined severity types
           sections = { "error", "warn", "info", "hint" },
 
-          colored = true, -- Displays diagnostics status in color if set to true.
+          colored = true,           -- Displays diagnostics status in color if set to true.
           update_in_insert = false, -- Update diagnostics in insert mode.
-          always_visible = false, -- Show diagnostics even if there are none.
+          always_visible = false,   -- Show diagnostics even if there are none.
         },
-      }
-      opts.sections.lualine_y = {
-        -- {
-        --   "filetype",
-        --   icons_enabled = true,
-        -- },
+
         {
           "lsp_status",
           icons_enabled = true,
           icon = " ",
+        },
+      }
+      opts.sections.lualine_y = {
+        {
+          "location",
+          icons_enabled = true,
+          icon = " "
+
         },
       }
       -- show date + 12-hour clock in lualine_z
@@ -299,7 +299,6 @@ return {
         -- your scroll configuration comes here
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
-        enabled = true,
         animate = {
           duration = { step = 15, total = 90 },
           easing = "inCubic",
@@ -411,12 +410,12 @@ return {
           local stats = require("lazy").stats()
           local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
           dashboard.section.footer.val = "⚡ Neovim loaded "
-            .. stats.loaded
-            .. "/"
-            .. stats.count
-            .. " plugins in "
-            .. ms
-            .. "ms"
+              .. stats.loaded
+              .. "/"
+              .. stats.count
+              .. " plugins in "
+              .. ms
+              .. "ms"
           pcall(vim.cmd.AlphaRedraw)
         end,
       })

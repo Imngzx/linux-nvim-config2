@@ -15,7 +15,6 @@ return {
         },
       },
       ensure_installed = {
-        "stylua",
         "shfmt",
         "clangd",
         "clang-format",
@@ -50,6 +49,12 @@ return {
           })
         end, 100)
       end)
+
+      for i = #opts.ensure_installed, 1, -1 do
+        if opts.ensure_installed[i] == "stylua" then
+          table.remove(opts.ensure_installed, i)
+        end
+      end
 
       mr.refresh(function()
         for _, tool in ipairs(opts.ensure_installed) do
