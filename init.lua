@@ -1,6 +1,8 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
 
+vim.o.termguicolors = true
+
 --NOTE: this is for remove space after save
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",

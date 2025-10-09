@@ -15,7 +15,7 @@ return {
           underline = true,
           update_in_insert = false,
           virtual_text = {
-            -- enabled = true,
+            enabled = true,
             spacing = 4,
             source = "if_many",
             prefix = "●",
