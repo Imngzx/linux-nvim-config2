@@ -1,5 +1,6 @@
 return {
   "norcalli/nvim-colorizer.lua",
+  cmd = { "ColorizerAttachToBuffer", "ColorizerDetachFromBuffer", "ColorizerReloadAllBuffers", "ColorizerToggle" },
   opts = {
     DEFAULT_OPTIONS = {
       RGB      = true,         -- #RGB hex codes
