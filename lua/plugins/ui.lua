@@ -124,20 +124,6 @@ return {
       }
 
       opts.sections.lualine_c = {
-        -- {
-        --   "filetype",
-        --   icon_only = true,
-        --   icon = { align = "right" },
-        -- },
-        -- {
-        --   "filename",
-        --   symbols = {
-        --     modified = "[+]", -- Text to show when the file is modified.
-        --     readonly = "[-]", -- Text to show when the file is non-modifiable or readonly.
-        --     unnamed = "[No Name]", -- Text to show for unnamed buffers.
-        --     newfile = "[New]",
-        --   },
-        -- },
 
         {
           "diff",
@@ -147,9 +133,6 @@ return {
             removed = " ",
           },
         },
-        -- {
-        --   "progress",
-        -- },
       }
 
       -- keep pretty path
