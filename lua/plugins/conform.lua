@@ -31,7 +31,7 @@ local M = {
       },
     },
     formatters_by_ft = {
-      -- lua = { "stylua" },
+      lua = { "stylua" },
       python = { "black", "ruff_format" },
       javascript = { "prettierd", "prettier", stop_after_first = true },
       rust = { "rustfmt" },

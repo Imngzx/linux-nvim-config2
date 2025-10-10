@@ -25,7 +25,6 @@ return {
         "marksman",
         "cpplint",
         -- "markdownlint-cli2",
-        "pylint",
         "markdown-toc",
         "ruff",
         "cmakelang",

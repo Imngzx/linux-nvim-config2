@@ -72,6 +72,9 @@ return {
         separator_style = "slope", --slope, slant
         show_buffer_close_icons = false,
         show_close_icon = false,
+        indicator = {
+          style = "underline",
+        }
       },
     },
   },
