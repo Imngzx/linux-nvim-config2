@@ -6,7 +6,6 @@
 --this is for LspInfo
 vim.keymap.set("n", "<leader>ai", "<cmd>LspInfo<CR>", { desc = "LSP Info" })
 vim.keymap.set("n", "<leader>ax", "<cmd>LazyExtras<CR>", { desc = "LazyExtras" })
-vim.keymap.set("n", "<leader>ac", "<cmd>ColorizerToggle<CR>", { desc = "Colorize color codes " })
 
 vim.keymap.set("n", "<leader>at", "<cmd>vert term<CR>", { desc = "Open Terminal" })
 --

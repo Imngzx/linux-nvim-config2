@@ -24,7 +24,6 @@ return {
         "debugpy",
         "marksman",
         "cpplint",
-        -- "markdownlint-cli2",
         "markdown-toc",
         "ruff",
         "cmakelang",
