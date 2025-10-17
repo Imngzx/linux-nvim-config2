@@ -1,11 +1,5 @@
 return {
-  --NOTE: configure nvim to load your desired colroschme
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "catppuccin", -- changing this can change the colorscheme
-    },
-  },
+  --this is for ui element
 
   --NOTE: folke noice config
   {
