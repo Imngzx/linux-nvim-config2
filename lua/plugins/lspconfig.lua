@@ -18,7 +18,7 @@ return {
             enabled = true,
             spacing = 4,
             source = "if_many",
-            prefix = "●",
+            prefix = "  ",
             -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
             -- prefix = "icons",
           },
