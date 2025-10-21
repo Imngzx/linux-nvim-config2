@@ -224,6 +224,16 @@ return {
         hide = {
           cursorline = true,
         },
+        ignore = {
+          floating_wins = false,
+          wintypes = function(winid, wintype)
+            local zen = package.loaded['snacks'].zen
+            if zen.win and not zen.win.closed then
+              return winid ~= zen.win.win
+            end
+            return wintype ~= ''
+          end
+        },
         render = function(props)
           local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
           if filename == "" then
@@ -238,30 +248,32 @@ return {
 
             for severity, icon in pairs(icons) do
               local n = #vim.diagnostic.get(props.buf, { severity = vim.diagnostic.severity[string.upper(severity)] })
+
               if n > 0 then
+                table.insert(label, { ' ' })
                 table.insert(label, { icon .. n .. ' ', group = 'DiagnosticSign' .. severity })
               end
             end
             if #label > 0 then
-              table.insert(label, { ' ' })
+              table.insert(label, { '|' })
             end
             return label
           end
 
           return {
-            guibg = "#3a3a4e",
+            guibg = "#313244",
             {
               ft_icon and { " ", ft_icon, " ", guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or "",
-              " ",
+              { " ", guifg = ft_color, },
               { filename, gui = modified and "bold" or "none" },
               modified and { " [+]", guifg = "#ff9e64" } or "",
               " ",
             },
 
             {
-              "| ",
               get_diagnostic_label(),
-            }
+            },
+
           }
         end,
       })
