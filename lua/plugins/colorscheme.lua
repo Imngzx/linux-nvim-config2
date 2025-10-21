@@ -241,7 +241,6 @@ return {
         lualine_bold = true,
       },
 
-
       on_highlights = function(hl, c)
         local prompt = "#2d3149"
         hl.TelescopeNormal = {
