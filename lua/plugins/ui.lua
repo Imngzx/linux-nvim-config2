@@ -249,7 +249,7 @@ return {
           end
 
           return {
-            guibg = "#44406e",
+            guibg = "#3a3a4e",
             {
               ft_icon and { " ", ft_icon, " ", guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or "",
               " ",
