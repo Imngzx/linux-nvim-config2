@@ -6,6 +6,8 @@
 --this is for LspInfo
 vim.keymap.set("n", "<leader>ai", "<cmd>LspInfo<CR>", { desc = "LSP Info" })
 vim.keymap.set("n", "<leader>ax", "<cmd>LazyExtras<CR>", { desc = "LazyExtras" })
+vim.keymap.set("n", "<leader>av", "<cmd>CsvViewToggle delimiter=, display_mode=border header_lnum=1<CR>",
+  { desc = "View .csv in better form" })
 
 vim.keymap.set("n", "<leader>at", "<cmd>vert term<CR>", { desc = "Open Terminal" })
 --
