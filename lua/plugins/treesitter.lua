@@ -50,6 +50,7 @@ return {
       "yaml",
       "ninja",
       "rst",
+      "sql"
     },
   },
   ---@param opts lazyvim.TSConfig

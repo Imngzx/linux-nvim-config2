@@ -78,12 +78,12 @@ return {
     }
   end,
   keys = {
-    { "<F5>", "<cmd>w<CR><cmd>RunCode<CR>", desc = "Save and Run Code" },
-    { "<S-F5>", "<cmd>RunClose<CR>", desc = "Stop Running" },
-    { "<C-F5>", "<cmd>w<CR><cmd>RunFile<CR>", desc = "Save and Run File" },
+    { "<F5>",       "<cmd>w<CR><cmd>RunCode<CR>", desc = "Save and Run Code" },
+    { "<S-F5>",     "<cmd>RunClose<CR>",          desc = "Stop Running" },
+    { "<C-F5>",     "<cmd>w<CR><cmd>RunFile<CR>", desc = "Save and Run File" },
     { "<leader>rc", "<cmd>w<CR><cmd>RunCode<CR>", desc = "Save and Run Code" },
     { "<leader>rf", "<cmd>w<CR><cmd>RunFile<CR>", desc = "Save and Run File" },
-    { "<leader>rp", "<cmd>RunProject<CR>", desc = "Run Project" },
-    { "<leader>rx", "<cmd>RunClose<CR>", desc = "Close Runner" },
+    { "<leader>rp", "<cmd>RunProject<CR>",        desc = "Run Project" },
+    { "<leader>rx", "<cmd>RunClose<CR>",          desc = "Close Runner" },
   },
 }

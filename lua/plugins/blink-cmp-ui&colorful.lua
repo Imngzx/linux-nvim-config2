@@ -31,6 +31,7 @@ return {
         winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
         draw = {
           -- add the new "menu" column
+          align_to = "cursor",
           columns = { { "kind_icon" }, { "label", gap = 1 }, { "menu", gap = 1 } },
           components = {
             label = {
