@@ -218,7 +218,7 @@ return {
       local devicons = require("nvim-web-devicons")
       require("incline").setup({
         window = {
-          padding = 0,
+          padding = 1,
           margin = { horizontal = 1 },
         },
         hide = {
@@ -261,7 +261,7 @@ return {
           end
 
           return {
-            guibg = "#313244",
+            guibg = "#45475a",
             {
               ft_icon and { " ", ft_icon, " ", guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or "",
               { " ", guifg = ft_color, },
@@ -317,7 +317,6 @@ return {
       indent = { enabled = true },
       quickfile = { enabled = true },
       scroll = {
-        debug = false,
         -- your scroll configuration comes here
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
