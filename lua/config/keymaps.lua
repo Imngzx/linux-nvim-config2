@@ -13,7 +13,7 @@ vim.keymap.set("n", "<leader>at", "<cmd>vert term<CR>", { desc = "Open Terminal"
 --
 --NOTE: enable this and disable above if you using windows
 --
--- vim.keymap.set("n", "<leader>at", "<cmd>vert term powershell<CR>", { desc = "Open Powershell" })
+-- vim.keymap.set("n", "<leader>at", "<cmd>vert term pwsh.exe<CR>", { desc = "Open Powershell" })
 -- vim.keymap.set("n", "<leader>aT", "<cmd>vert term<CR>", { desc = "Open CMD" })
 --
 local keymap = vim.keymap
