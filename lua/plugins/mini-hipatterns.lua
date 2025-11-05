@@ -45,6 +45,12 @@ return {
     }
   end,
   config = function(_, opts)
+    -- define M locally to store state between callbacks
+    local M = {
+      hl = {},
+      colors = {},
+    }
+
     if type(opts.tailwind) == "table" and opts.tailwind.enabled then
       -- reset hl groups when colorscheme changes
       vim.api.nvim_create_autocmd("ColorScheme", {
@@ -52,6 +58,7 @@ return {
           M.hl = {}
         end,
       })
+
       opts.highlighters.tailwind = {
         pattern = function()
           if not vim.tbl_contains(opts.tailwind.ft, vim.bo.filetype) then
@@ -84,6 +91,7 @@ return {
         extmark_opts = { priority = 2000 },
       }
     end
+
     require("mini.hipatterns").setup(opts)
   end,
 }
