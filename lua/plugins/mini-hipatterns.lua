@@ -73,7 +73,7 @@ return {
         group = function(_, _, m)
           ---@type string
           local match = m.full_match
-          ---@type string, number
+          ---@type string, number?
           local color, shade = match:match("[%w-]+%-([a-z%-]+)%-(%d+)")
           shade = tonumber(shade)
           local bg = vim.tbl_get(M.colors, color, shade)
