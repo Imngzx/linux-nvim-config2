@@ -235,7 +235,7 @@ return {
       local devicons = require 'nvim-web-devicons'
       require('incline').setup {
         window = {
-          padding = 0,
+          padding = 2,
           margin = { horizontal = 0 },
         },
         render = function(props)
