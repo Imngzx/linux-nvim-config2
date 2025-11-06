@@ -231,32 +231,35 @@ return {
     enabled = true,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
-      local helpers = require 'incline.helpers'
-      local devicons = require 'nvim-web-devicons'
-      require('incline').setup {
+      local helpers = require("incline.helpers")
+      local devicons = require("nvim-web-devicons")
+      require("incline").setup({
         window = {
-          padding = 2,
-          margin = { horizontal = 0 },
+          padding = 0,
+          margin = { horizontal = 1 },
+        },
+        hide = {
+          cursorline = true,
         },
         render = function(props)
-          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
-          if filename == '' then
-            filename = '[No Name]'
+          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+          if filename == "" then
+            filename = "[No Name]"
           end
           local ft_icon, ft_color = devicons.get_icon_color(filename)
           local modified = vim.bo[props.buf].modified
           return {
-            ft_icon and { ' ', ft_icon, ' ', guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or '',
+            ft_icon and { " ", ft_icon, " ", guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or "",
             { " ", guifg = ft_color, },
-            { filename, gui = modified and 'bold,italic' or 'bold' },
-            ' ',
-            guibg = '#44406e',
+            { filename, gui = modified and "bold" or "none" },
+            modified and { " [+]", guifg = "#ff9e64" } or "",
+            " ",
+            guibg = "#44406e",
           }
         end,
-      }
+      })
     end,
   },
-
   -- NOTE: the top >>> thingy
   {
     "bekaboo/dropbar.nvim",
