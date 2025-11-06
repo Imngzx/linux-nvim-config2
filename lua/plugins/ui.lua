@@ -68,7 +68,8 @@ return {
         show_close_icon = false,
         indicator = {
           style = "underline",
-        }
+        },
+        always_show_bufferline = true
       },
     },
   },
