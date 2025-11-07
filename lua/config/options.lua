@@ -7,3 +7,4 @@
 vim.o.cursorline = true
 vim.o.termguicolors = true
 vim.opt.cursorlineopt = 'number'
+vim.o.winborder = "rounded"

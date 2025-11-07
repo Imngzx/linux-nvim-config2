@@ -1,5 +1,5 @@
 return {
-  --this is for ui element
+  --this is for all of the ui element
 
   --NOTE: folke noice config
   {
@@ -69,7 +69,7 @@ return {
         indicator = {
           style = "underline",
         },
-        always_show_bufferline = true
+        -- always_show_bufferline = true
       },
     },
   },
@@ -261,7 +261,8 @@ return {
       })
     end,
   },
-  -- NOTE: the top >>> thingy
+
+  -- NOTE: the top a>b>c> thingy
   {
     "bekaboo/dropbar.nvim",
     event = "VeryLazy",
@@ -272,6 +273,24 @@ return {
       vim.keymap.set("n", "[;", dropbar_api.goto_context_start, { desc = "Go to start of current context" })
       vim.keymap.set("n", "];", dropbar_api.select_next_context, { desc = "Select next context" })
     end,
+  },
+
+  {
+    "NStefan002/screenkey.nvim",
+    event = "VeryLazy",
+    version = "*", -- or branch = "main", to use the latest commit
+    config = function()
+      require("screenkey").setup({
+        filter = function(keys)
+          local ignore = { "h", "j", "k", "l" }
+          return vim.iter(keys)
+              :filter(function(k)
+                return not vim.tbl_contains(ignore, k.key)
+              end)
+              :totable()
+        end,
+      })
+    end
   },
 
   --NOTE: scrolling config

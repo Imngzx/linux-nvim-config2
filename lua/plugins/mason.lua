@@ -8,6 +8,7 @@ return {
     opts_extend = { "ensure_installed" },
     opts = {
       ui = {
+        backdrop = 100,
         icons = {
           package_installed = "✓", -- Icon for installed packages
           package_pending = "➜", -- Icon for packages in progress
