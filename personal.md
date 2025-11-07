@@ -60,3 +60,9 @@ also
   pip --version
 ```
 
+
+
+```bash
+sudo update-alternatives --config python3
+```
+this is for config the python ver in wsl
