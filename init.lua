@@ -1,6 +1,8 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
 
+vim.o.termguicolors = true
+
 --NOTE: this is for remove space after save
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
@@ -13,15 +15,22 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 if vim.fn.has("wsl") == 1 then
   vim.g.clipboard = {
     name = "WslClipboard",
+    -- Install Neovim on host (Windows) to use faster global clipboard
     copy = {
-      ["+"] = "clip.exe",
-      ["*"] = "clip.exe",
+      ["+"] = {
+        "/mnt/c/Program Files/Neovim/bin/win32yank.exe",
+        "-i",
+        "--crlf",
+      },
+      ["*"] = {
+        "/mnt/c/Program Files/Neovim/bin/win32yank.exe",
+        "-i",
+        "--crlf",
+      },
     },
     paste = {
-      ['+'] =
-      'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-      ['*'] =
-      'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ["+"] = { "/mnt/c/Program Files/Neovim/bin/win32yank.exe", "-o", "--lf" },
+      ["*"] = { "/mnt/c/Program Files/Neovim/bin/win32yank.exe", "-o", "--lf" },
     },
     cache_enabled = 0,
   }

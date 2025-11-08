@@ -312,6 +312,9 @@ return {
         },
       },
 
+      image = {
+        enabled = true,
+      },
       dim = { enabled = true },
       notifier = { enabled = true },
       indent = { enabled = true },
