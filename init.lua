@@ -1,16 +1,6 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
 
-vim.o.termguicolors = true
-
---NOTE: this is for remove space after save
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*",
-  callback = function()
-    vim.cmd([[%s/\s\+$//e]])
-  end,
-})
-
 --clipboard
 if vim.fn.has("wsl") == 1 then
   vim.g.clipboard = {
@@ -37,14 +27,6 @@ if vim.fn.has("wsl") == 1 then
 end
 vim.opt.clipboard = "unnamedplus"
 
---NOTE: Auto-enable spell checking for certain filetypes (useful for md files)
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "markdown", "text", "gitcommit", "latex" },
-  callback = function()
-    vim.opt_local.spell = true
-    vim.opt_local.spelllang = { "ms", "en_us" }
-  end,
-})
 
 --NOTE:   if you use neovide
 if vim.g.neovide then
