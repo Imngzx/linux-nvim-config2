@@ -5,5 +5,11 @@ return {
   keys = {
     { "<leader>ac", "<cmd>Atone toggle <cr>", desc = "Open Atone" },
   },
-  opts = {}, -- your configuration here
+  opts = {
+    ui = {
+      border = "single",
+      compact = "true",
+    }
+
+  }, -- your configuration here
 }
