@@ -121,6 +121,7 @@ return {
       -- vim.cmd("colorscheme rose-pine")
     end,
   },
+
   -- NOTE: gruvbox
   {
     "ellisonleao/gruvbox.nvim",
@@ -155,6 +156,7 @@ return {
       })
     end,
   },
+
   -- NOTE: Kanagwa
   {
     "rebelot/kanagawa.nvim",
@@ -219,6 +221,7 @@ return {
       })
     end,
   },
+
   -- NOTE: neosolarized
   {
     "craftzdog/solarized-osaka.nvim",
@@ -274,10 +277,6 @@ return {
 
     },
   },
-
-
-
-
 
   -- NOTE : tokyonight
   {
