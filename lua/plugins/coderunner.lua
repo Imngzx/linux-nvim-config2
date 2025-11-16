@@ -93,6 +93,20 @@ if is_windows then
       "python -u $fileName",
     },
 
+    java = {
+      "cd $dir &&", "javac $fileName &&", "java $fileNameWithoutExt"
+    },
+
+    rust = {
+      "cd $dir &&",
+      "rustc $fileName &&",
+      "$dir/$fileNameWithoutExt"
+    },
+
+    typescript = {
+      "deno run"
+    },
+
   }
 else
   filetype = {
@@ -103,6 +117,20 @@ else
     python = {
       "cd $dir &&",
       "python3 -u $fileName",
+    },
+
+    java = {
+      "cd $dir &&", "javac $fileName &&", "java $fileNameWithoutExt"
+    },
+
+    rust = {
+      "cd $dir &&",
+      "rustc $fileName &&",
+      "$dir/$fileNameWithoutExt"
+    },
+
+    typescript = {
+      "deno run"
     },
 
   }
