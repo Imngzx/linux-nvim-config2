@@ -1,7 +1,20 @@
-_G.RUNNER_MODE = 1
+-- ====================================================================
+-- ⚡ CONFIGURATION SWITCHES (Set these at the top)
+-- ====================================================================
 
--- helper function to get mode
+-- Execution window mode: "float", "tab", or "term"
+local RUNNER_MODE = 1
+-- C build type: 1 = Release (GCC -O2); 2 = Debug (Clang -g -fsanitize)
+local C_BUILD_TYPE = 1
+-- C++ build type: 1 = Release (G++ -O2); 2 = Debug (Clang++ -g -fsanitize)
+local CPP_BUILD_TYPE = 1
+
+-- ====================================================================
+-- ⚙️ HELPER FUNCTIONS
+-- ====================================================================
+
 local function get_mode()
+  -- Using the local RUNNER_MODE variable defined above
   if RUNNER_MODE == 1 then
     return "float"
   elseif RUNNER_MODE == 2 then
@@ -9,13 +22,56 @@ local function get_mode()
   elseif RUNNER_MODE == 3 then
     return "term"
   else
-    return "float"
+    return "float" -- Default if RUNNER_MODE is set incorrectly
   end
 end
 
--- detect OS
-local is_windows = vim.loop.os_uname().sysname:match("Windows")
--- alternative: local is_windows = vim.fn.has("win32") == 1
+local function get_c_mode()
+  if C_BUILD_TYPE == 1 then
+    -- Release Build (GCC -O2)
+    return {
+      "cd $dir &&",
+      "mkdir -p out &&",
+      "gcc -Wall -Wextra -O2 -o out/$fileNameWithoutExt $fileName -lm &&",
+      "./out/$fileNameWithoutExt",
+    }
+  else
+    -- Debug Build (Clang -g -fsanitize)
+    return {
+      "cd $dir &&",
+      "mkdir -p out &&",
+      "clang -Wall -Wextra -g -fsanitize=address,undefined -o out/$fileNameWithoutExt $fileName -lm &&",
+      "./out/$fileNameWithoutExt",
+    }
+  end
+end
+
+local function get_cpp_mode()
+  if CPP_BUILD_TYPE == 1 then
+    -- Release Build (G++ -O2)
+    return {
+      "cd $dir &&",
+      "mkdir -p out &&",
+      "g++ -std=c++23 -Wall -Wextra -O2 -o out/$fileNameWithoutExt $fileName -lm &&",
+      "./out/$fileNameWithoutExt",
+    }
+  else
+    -- Debug Build (Clang++ -g -fsanitize)
+    return {
+      "cd $dir &&",
+      "mkdir -p out &&",
+      "clang++ -std=c++23 -Wall -Wextra -g -fsanitize=address,undefined -o out/$fileNameWithoutExt $fileName -lm &&",
+      "./out/$fileNameWithoutExt",
+    }
+  end
+end
+
+-- ====================================================================
+-- 💻 OS DETECTION AND FINAL CONFIG
+-- ====================================================================
+
+-- Detect OS
+local is_windows = vim.uv.os_uname().sysname:match("Windows")
 
 -- compiler configs
 local filetype = {}
@@ -23,36 +79,38 @@ local filetype = {}
 if is_windows then
   filetype = {
     cpp = {
+      -- MSVC CL on Windows (unchanged)
       "cd $dir && cl /utf-8 /nologo /EHsc /O2 /std:c++latest /Zc:__cplusplus $fileName /Fe:$fileNameWithoutExt.exe && $fileNameWithoutExt.exe",
     },
+
     c = {
+      -- MSVC CL on Windows (unchanged)
       "cd $dir && cl /utf-8 /nologo /O2 $fileName /Fe:$fileNameWithoutExt.exe && $fileNameWithoutExt.exe",
     },
+
     python = {
       "cd $dir &&",
       "python -u $fileName",
     },
+
   }
 else
   filetype = {
-    c = {
-      "cd $dir &&",
-      "mkdir -p out &&",
-      "gcc -Wall -Wextra -O2 -o out/$fileNameWithoutExt $fileName -lm &&",
-      "./out/$fileNameWithoutExt",
-    },
-    cpp = {
-      "cd $dir &&",
-      "mkdir -p out &&",
-      "g++ -std=c++23 -Wall -Wextra -O2 -o out/$fileNameWithoutExt $fileName -lm &&",
-      "./out/$fileNameWithoutExt",
-    },
+    c = get_c_mode(),
+
+    cpp = get_cpp_mode(),
+
     python = {
       "cd $dir &&",
       "python3 -u $fileName",
     },
+
   }
 end
+
+-- ====================================================================
+-- 📦 RETURN CONFIG
+-- ====================================================================
 
 return {
   "CRAG666/code_runner.nvim",
