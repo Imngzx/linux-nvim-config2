@@ -5,9 +5,9 @@
 -- Execution window mode: "float", "tab", or "term"
 local RUNNER_MODE = 1
 -- C build type: 1 = Release (GCC -O2); 2 = Debug (Clang -g -fsanitize)
-local C_BUILD_TYPE = 1
+local C_BUILD_TYPE = 2
 -- C++ build type: 1 = Release (G++ -O2); 2 = Debug (Clang++ -g -fsanitize)
-local CPP_BUILD_TYPE = 1
+local CPP_BUILD_TYPE = 2
 
 -- ====================================================================
 -- ⚙️ HELPER FUNCTIONS
