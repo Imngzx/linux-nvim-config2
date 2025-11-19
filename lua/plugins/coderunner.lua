@@ -40,7 +40,7 @@ local function get_c_mode()
     return {
       "cd $dir &&",
       "mkdir -p out &&",
-      "clang -Wall -Wextra -g -fsanitize=address,undefined -o out/$fileNameWithoutExt $fileName -lm &&",
+      "clang -Wall -Wextra -O2 -g -fsanitize=address,undefined -o out/$fileNameWithoutExt $fileName -lm &&",
       "./out/$fileNameWithoutExt",
     }
   end
@@ -60,7 +60,7 @@ local function get_cpp_mode()
     return {
       "cd $dir &&",
       "mkdir -p out &&",
-      "clang++ -std=c++23 -Wall -Wextra -g -fsanitize=address,undefined -o out/$fileNameWithoutExt $fileName -lm &&",
+      "clang++ -std=c++23 -Wall -Wextra -O2 -g -fsanitize=address,undefined -o out/$fileNameWithoutExt $fileName -lm &&",
       "./out/$fileNameWithoutExt",
     }
   end

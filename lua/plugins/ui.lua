@@ -185,10 +185,15 @@ return {
         -- },
 
         {
+          "venv-selector",
+        },
+
+        {
           "lsp_status",
           icons_enabled = true,
           icon = " ",
         },
+
       }
       opts.sections.lualine_y = {
         {
