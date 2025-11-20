@@ -4,9 +4,9 @@
 
 -- Execution window mode: "float", "tab", or "term"
 local RUNNER_MODE = 1
--- C build type: 1 = Release (GCC -O2); 2 = Debug (Clang -g -fsanitize)
+-- C build type: 1 = Release (GCC -O2); 2 = Debug (Clang -g -fsanitize) NOTE:: Only available on UNIX
 local C_BUILD_TYPE = 2
--- C++ build type: 1 = Release (G++ -O2); 2 = Debug (Clang++ -g -fsanitize)
+-- C++ build type: 1 = Release (G++ -O2); 2 = Debug (Clang++ -g -fsanitize) NOTE:: Only available on UNIX
 local CPP_BUILD_TYPE = 2
 
 -- ====================================================================
@@ -40,7 +40,7 @@ local function get_c_mode()
     return {
       "cd $dir &&",
       "mkdir -p out &&",
-      "clang -Wall -Wextra -O2 -g -fsanitize=address,undefined -o out/$fileNameWithoutExt $fileName -lm &&",
+      "clang -Wall -Wextra -g -fsanitize=address,undefined -o out/$fileNameWithoutExt $fileName -lm &&",
       "./out/$fileNameWithoutExt",
     }
   end
@@ -52,7 +52,7 @@ local function get_cpp_mode()
     return {
       "cd $dir &&",
       "mkdir -p out &&",
-      "g++ -std=c++23 -Wall -Wextra -O2 -o out/$fileNameWithoutExt $fileName -lm &&",
+      "g++ -std=c++23 -Wall -Wextra -O2 -o out/$fileNameWithoutExt $fileName &&",
       "./out/$fileNameWithoutExt",
     }
   else
@@ -60,7 +60,7 @@ local function get_cpp_mode()
     return {
       "cd $dir &&",
       "mkdir -p out &&",
-      "clang++ -std=c++23 -Wall -Wextra -O2 -g -fsanitize=address,undefined -o out/$fileNameWithoutExt $fileName -lm &&",
+      "clang++ -std=c++23 -Wall -Wextra -g -fsanitize=address,undefined -o out/$fileNameWithoutExt $fileName -lm &&",
       "./out/$fileNameWithoutExt",
     }
   end
@@ -94,18 +94,20 @@ if is_windows then
     },
 
     java = {
-      "cd $dir &&", "javac $fileName &&", "java $fileNameWithoutExt"
+      "cd $dir; javac $fileName; java $fileNameWithoutExt"
     },
 
     rust = {
-      "cd $dir &&",
-      "rustc $fileName &&",
-      "$dir/$fileNameWithoutExt"
+      "cd $dir; rustc $fileName; .\\$fileNameWithoutExt.exe"
     },
 
     typescript = {
-      "deno run"
+      "deno run $fileName"
     },
+
+    zig = {
+      "cd $dir; zig build-exe $fileName -O ReleaseSafe -o $fileNameWithoutExt.exe; .\\$fileNameWithoutExt.exe"
+    }
 
   }
 else
@@ -126,12 +128,16 @@ else
     rust = {
       "cd $dir &&",
       "rustc $fileName &&",
-      "$dir/$fileNameWithoutExt"
+      "./$fileNameWithoutExt"
     },
 
     typescript = {
-      "deno run"
+      "deno run $fileName"
     },
+
+    zig = {
+      "cd $dir && zig build-exe $fileName -O ReleaseSafe -femit-bin=$fileNameWithoutExt && ./$fileNameWithoutExt"
+    }
 
   }
 end
