@@ -29,7 +29,6 @@ return {
         "ruff",
         "cmakelang",
         "cmakelint",
-        -- "codebook",
         "taplo",
         "json-lsp",
       },

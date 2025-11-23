@@ -1,10 +1,32 @@
 return {
   --this is for all of the ui element
 
-  --NOTE: folke noice config
+  --NOTE: folke noice config *lsp howver doc and also middle cmdline ui
   {
     "folke/noice.nvim",
     event = "VeryLazy",
+    config = function()
+      require("noice").setup({
+        presets = {
+          bottom_search = true,
+          long_message_to_split = true,
+        },
+        views = {
+          hover = {
+            border = {
+              style = "rounded",
+            }
+          }
+        },
+        lsp = {
+          override = {
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true,
+          }
+        }
+      })
+    end,
     opts = function(_, opts)
       table.insert(opts.routes, {
         filter = {
@@ -79,7 +101,7 @@ return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     opts = function(_, opts)
-      local LazyVim = require("lazyvim.util")
+      -- local LazyVim = require("lazyvim.util")
 
       -- ✅ Add your separators config
       opts.options = vim.tbl_deep_extend("force", opts.options or {}, {
@@ -350,20 +372,6 @@ return {
     opts = {
       preset = "helix",
     },
-  },
-
-  --NOTE : cmd line appearance change
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("noice").setup({
-        presets = {
-          bottom_search = true,
-          long_message_to_split = true,
-        },
-      })
-    end,
   },
 
   --NOTE: start screen config and also the key to back to dashboard
