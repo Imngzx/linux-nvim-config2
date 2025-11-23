@@ -262,6 +262,16 @@ return {
       local helpers = require("incline.helpers")
       local devicons = require("nvim-web-devicons")
       require("incline").setup({
+        ignore = {
+          floating_wins = false,
+          wintypes = function(winid, wintype)
+            local zen = package.loaded['snacks'].zen
+            if zen.win and not zen.win.closed then
+              return winid ~= zen.win.win
+            end
+            return wintype ~= ''
+          end
+        },
         window = {
           padding = 0,
           margin = { horizontal = 1 },
