@@ -246,7 +246,7 @@ return {
           -- return date .. " | " .. clock
           --
           --NOTE: enable clock only
-          return string.format("%02d:%02d %s", hour, time.min, suffix) --
+          return string.format("  %02d:%02d %s", hour, time.min, suffix) --
         end,
       }
     end,
@@ -316,18 +316,18 @@ return {
     "NStefan002/screenkey.nvim",
     event = "VeryLazy",
     version = "*", -- or branch = "main", to use the latest commit
-    config = function()
-      require("screenkey").setup({
-        filter = function(keys)
-          local ignore = { "h", "j", "k", "l" }
-          return vim.iter(keys)
-              :filter(function(k)
-                return not vim.tbl_contains(ignore, k.key)
-              end)
-              :totable()
-        end,
-      })
-    end
+    -- config = function()
+    --   require("screenkey").setup({
+    --     filter = function(keys)
+    --       local ignore = { "h", "j", "k", "l" }
+    --       return vim.iter(keys)
+    --           :filter(function(k)
+    --             return not vim.tbl_contains(ignore, k.key)
+    --           end)
+    --           :totable()
+    --     end,
+    --   })
+    -- end
   },
 
   --NOTE: scrolling config
