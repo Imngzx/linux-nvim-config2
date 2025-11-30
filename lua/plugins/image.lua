@@ -1,5 +1,6 @@
 return {
   "3rd/image.nvim",
+  event = "VeryLazy",
   config = function()
     local ok, image = pcall(require, "image")
     if not ok then
