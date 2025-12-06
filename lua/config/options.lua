@@ -6,5 +6,5 @@
 -- vim.cmd([[let &t_Ce = "\e[4:0m"]])
 vim.o.cursorline = true
 vim.o.termguicolors = true
-vim.opt.cursorlineopt = 'number'
+vim.opt.cursorlineopt = "number"
 vim.o.winborder = "rounded"

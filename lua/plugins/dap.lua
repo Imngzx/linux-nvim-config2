@@ -244,25 +244,46 @@ return {
 			args = { "--hackage-version=0.0.33.0" },
 		}
 
+		-- dap.adapters.codelldb = {
+		-- 	type = "executable",
+		-- 	command = "codelldb",
+		-- }
+
 		dap.adapters.codelldb = {
-			type = "executable",
-			command = "codelldb",
+			type = "server",
+			port = "${port}",
+			executable = {
+				command = "codelldb",
+				args = { "--port", "${port}" },
+			},
 		}
 
-		dap.configurations.cpp = {
+		dap.configurations.zig = {
 			{
-				name = "Launch file (codelldb)",
+				name = "Launch",
 				type = "codelldb",
 				request = "launch",
-				program = function()
-					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-				end,
+				program = "${workspaceFolder}/zig-out/bin/${workspaceFolderBasename}",
 				cwd = "${workspaceFolder}",
 				stopOnEntry = false,
+				args = {},
+			},
+		}
+
+		dap.configurations.zig = {
+			{
+				name = "Launch",
+				type = "codelldb",
+				request = "launch",
+				program = "${workspaceFolder}/zig-out/bin/${workspaceFolderBasename}",
+				cwd = "${workspaceFolder}",
+				stopOnEntry = false,
+				args = {},
 			},
 		}
 		dap.configurations.c = dap.configurations.cpp
 		dap.configurations.rust = dap.configurations.cpp
+
 		dap.configurations.haskell = {
 			{
 				type = "haskell",

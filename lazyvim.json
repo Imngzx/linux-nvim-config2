@@ -11,6 +11,7 @@
     "lazyvim.plugins.extras.lang.markdown",
     "lazyvim.plugins.extras.lang.python",
     "lazyvim.plugins.extras.lang.toml",
+    "lazyvim.plugins.extras.lang.zig",
     "lazyvim.plugins.extras.ui.alpha",
     "lazyvim.plugins.extras.ui.treesitter-context",
     "lazyvim.plugins.extras.vscode"

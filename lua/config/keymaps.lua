@@ -6,8 +6,12 @@
 --this is for LspInfo
 vim.keymap.set("n", "<leader>ai", "<cmd>LspInfo<CR>", { desc = "LSP Info" })
 vim.keymap.set("n", "<leader>ax", "<cmd>LazyExtras<CR>", { desc = "LazyExtras" })
-vim.keymap.set("n", "<leader>av", "<cmd>CsvViewToggle delimiter=, display_mode=border header_lnum=1<CR>",
-  { desc = "View .csv in better form" })
+vim.keymap.set(
+	"n",
+	"<leader>av",
+	"<cmd>CsvViewToggle delimiter=, display_mode=border header_lnum=1<CR>",
+	{ desc = "View .csv in better form" }
+)
 
 vim.keymap.set("n", "<leader>at", "<cmd>vert term<CR>", { desc = "Open Terminal" })
 --
@@ -73,16 +77,16 @@ keymap.set("n", "<C-w><down>", "<C-w>-")
 --NOTE: NORMAL MODE FROM TERMNINAL
 -- Works only in terminal mode (t)
 vim.keymap.set("t", "<Esc>", function()
-  -- if it's the 2nd press within 300ms, close terminal
-  if vim.g.__last_esc and (vim.loop.hrtime() - vim.g.__last_esc) / 1e6 < 300 then
-    vim.g.__last_esc = nil
-    -- if it's a floating terminal, close it
-    if vim.bo.buftype == "terminal" then
-      vim.api.nvim_win_close(0, true)
-    end
-  else
-    vim.g.__last_esc = vim.loop.hrtime()
-    -- normal behavior: leave terminal-insert mode
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true), "n", false)
-  end
+	-- if it's the 2nd press within 300ms, close terminal
+	if vim.g.__last_esc and (vim.loop.hrtime() - vim.g.__last_esc) / 1e6 < 300 then
+		vim.g.__last_esc = nil
+		-- if it's a floating terminal, close it
+		if vim.bo.buftype == "terminal" then
+			vim.api.nvim_win_close(0, true)
+		end
+	else
+		vim.g.__last_esc = vim.loop.hrtime()
+		-- normal behavior: leave terminal-insert mode
+		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true), "n", false)
+	end
 end, { noremap = true, silent = true })

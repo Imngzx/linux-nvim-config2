@@ -1,78 +1,78 @@
 local M = {
-  "stevearc/conform.nvim",
-  event = { "BufReadPost", "BufNewFile" },
+	"stevearc/conform.nvim",
+	event = { "BufReadPost", "BufNewFile" },
 
-  -- Instead of `config`, use `opts` to extend conform's setup
-  opts = {
-    formatters = {
-      schemat = {
-        command = "schemat",
-        stdin = true,
-        exit_codes = { 0 },
-        inherit = true,
-      },
+	-- Instead of `config`, use `opts` to extend conform's setup
+	opts = {
+		formatters = {
+			schemat = {
+				command = "schemat",
+				stdin = true,
+				exit_codes = { 0 },
+				inherit = true,
+			},
 
-      ["markdown-toc"] = {
-        condition = function(_, ctx)
-          for _, line in ipairs(vim.api.nvim_buf_get_lines(ctx.buf, 0, -1, false)) do
-            if line:find("<!%-%- toc %-%->") then
-              return true
-            end
-          end
-        end,
-      },
-      ["markdownlint-cli2"] = {
-        condition = function(_, ctx)
-          local diag = vim.tbl_filter(function(d)
-            return d.source == "markdownlint"
-          end, vim.diagnostic.get(ctx.buf))
-          return #diag > 0
-        end,
-      },
-    },
-    formatters_by_ft = {
-      lua = { "stylua" },
-      python = { "black", "ruff_format" },
-      javascript = { "prettierd", "prettier", stop_after_first = true },
-      rust = { "rustfmt" },
-      c = { "clang_format" },
-      cpp = { "clang_format" },
-      scheme = { "schemat" },
-      sh = { "shfmt" },
-      bash = { "shfmt" },
-      toml = { "taplo" },
-      cmake = { "cmake_format" },
-      json = { "jq" },
-      ["markdown"] = { "markdownlint-cli2", "markdown-toc", "prettier" },
-      ["markdown.mdx"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
-      ["*"] = { "codespell" },
-      ["_"] = { "trim_whitespace" },
-    },
-    -- LazyVim already handles format-on-save, so no need to manually set `format_after_save`
-  },
+			["markdown-toc"] = {
+				condition = function(_, ctx)
+					for _, line in ipairs(vim.api.nvim_buf_get_lines(ctx.buf, 0, -1, false)) do
+						if line:find("<!%-%- toc %-%->") then
+							return true
+						end
+					end
+				end,
+			},
+			["markdownlint-cli2"] = {
+				condition = function(_, ctx)
+					local diag = vim.tbl_filter(function(d)
+						return d.source == "markdownlint"
+					end, vim.diagnostic.get(ctx.buf))
+					return #diag > 0
+				end,
+			},
+		},
+		formatters_by_ft = {
+			lua = { "stylua" },
+			python = { "black", "ruff_format" },
+			javascript = { "prettierd", "prettier", stop_after_first = true },
+			rust = { "rustfmt" },
+			c = { "clang_format" },
+			cpp = { "clang_format" },
+			scheme = { "schemat" },
+			sh = { "shfmt" },
+			bash = { "shfmt" },
+			toml = { "taplo" },
+			cmake = { "cmake_format" },
+			json = { "jq" },
+			["markdown"] = { "markdownlint-cli2", "markdown-toc", "prettier" },
+			["markdown.mdx"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
+			["*"] = { "codespell" },
+			["_"] = { "trim_whitespace" },
+		},
+		-- LazyVim already handles format-on-save, so no need to manually set `format_after_save`
+	},
 }
 
 -- Keep your FormatDisable / FormatEnable user commands
 M.init = function()
-  vim.api.nvim_create_user_command("FormatDisable", function(args)
-    if args.bang then
-      vim.b.disable_autoformat = true
-      print("Disable format on save for this buffer")
-    else
-      vim.g.disable_autoformat = true
-    end
-  end, {
-    desc = "Disable autoformat-on-save",
-    bang = false,
-  })
+	vim.api.nvim_create_user_command("FormatDisable", function(args)
+		if args.bang then
+			vim.b.disable_autoformat = true
+			print("Disable format on save for this buffer")
+		else
+			vim.g.disable_autoformat = true
+		end
+	end, {
+		desc = "Disable autoformat-on-save",
+		bang = false,
+	})
 
-  vim.api.nvim_create_user_command("FormatEnable", function()
-    vim.b.disable_autoformat = false
-    vim.g.disable_autoformat = false
-    print("Re-enable format on save for this buffer")
-  end, {
-    desc = "Re-enable autoformat-on-save",
-  })
+	vim.api.nvim_create_user_command("FormatEnable", function()
+		vim.b.disable_autoformat = false
+		vim.g.disable_autoformat = false
+		print("Re-enable format on save for this buffer")
+	end, {
+		desc = "Re-enable autoformat-on-save",
+	})
 end
 
 return M

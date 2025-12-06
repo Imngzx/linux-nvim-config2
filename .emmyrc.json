@@ -14,7 +14,8 @@
       "$VIMRUNTIME/lua",
       "$LLS_Addons/luvit",
       "$LLS_Addons/luvit/library/uv",
-      "$HOME/.local/share/nvim/lazy"
+      "$HOME/.local/share/nvim/lazy",
+      "${3rd}/luv/library"
     ],
     "ignoreGlobs": [
       "**/*_spec.lua"
