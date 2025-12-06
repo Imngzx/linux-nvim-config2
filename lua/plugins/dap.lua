@@ -236,8 +236,6 @@ return {
 
 		local dap = require("dap")
 
-		local is_windows = vim.uv.os_uname().sysname:match("Windows")
-
 		dap.adapters.haskell = {
 			type = "executable",
 			command = "haskell-debug-adapter",
@@ -270,17 +268,6 @@ return {
 			},
 		}
 
-		dap.configurations.zig = {
-			{
-				name = "Launch",
-				type = "codelldb",
-				request = "launch",
-				program = "${workspaceFolder}/zig-out/bin/${workspaceFolderBasename}",
-				cwd = "${workspaceFolder}",
-				stopOnEntry = false,
-				args = {},
-			},
-		}
 		dap.configurations.c = dap.configurations.cpp
 		dap.configurations.rust = dap.configurations.cpp
 
