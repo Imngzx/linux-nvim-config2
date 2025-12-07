@@ -20,7 +20,7 @@ return {
 				"shfmt",
 				"clangd",
 				"clang-format",
-				"zls",
+				-- "zls",
 				"codespell",
 				"debugpy",
 				"basedpyright",
