@@ -106,7 +106,9 @@ if is_windows then
 		},
 
 		zig = {
-			"cd $dir; zig build-exe $fileName -O ReleaseSafe -o $fileNameWithoutExt.exe; .\\$fileNameWithoutExt.exe",
+			"cd $dir &&",
+			"zig build run",
+			-- "cd $dir; zig build-exe $fileName -O ReleaseSafe -o $fileNameWithoutExt.exe; .\\$fileNameWithoutExt.exe",
 		},
 	}
 else
@@ -137,7 +139,9 @@ else
 		},
 
 		zig = {
-			"cd $dir && zig build-exe $fileName -O ReleaseSafe -femit-bin=$fileNameWithoutExt && ./$fileNameWithoutExt",
+			"cd $dir &&",
+			"zig build run",
+			-- "cd $dir && zig build-exe $fileName -O ReleaseSafe -femit-bin=$fileNameWithoutExt && ./$fileNameWithoutExt",
 		},
 	}
 end

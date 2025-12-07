@@ -32,7 +32,13 @@ local M = {
 		},
 		formatters_by_ft = {
 			lua = { "stylua" },
-			python = { "black", "ruff_format" },
+			python = function(bufnr)
+				if require("conform").get_formatter_info("ruff_format", bufnr).available then
+					return { "ruff_format" }
+				else
+					return { "isort", "black" }
+				end
+			end,
 			javascript = { "prettierd", "prettier", stop_after_first = true },
 			rust = { "rustfmt" },
 			c = { "clang_format" },
@@ -43,9 +49,10 @@ local M = {
 			toml = { "taplo" },
 			cmake = { "cmake_format" },
 			json = { "jq" },
-			["markdown"] = { "markdownlint-cli2", "markdown-toc", "prettier" },
-			["markdown.mdx"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
-			["*"] = { "codespell" },
+			-- zig = { "zls" },
+			-- markdown = { "trim_whitespace" },
+			-- ["markdown.mdx"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
+			["*"] = { "codespell", "trim_whitespace" },
 			["_"] = { "trim_whitespace" },
 		},
 		-- LazyVim already handles format-on-save, so no need to manually set `format_after_save`
