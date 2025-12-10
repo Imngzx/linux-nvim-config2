@@ -24,9 +24,9 @@ return {
         },
       },
     },
-    -- cmdline = {
-    --   enabled = false,
-    -- },
+    cmdline = {
+      enabled = false,
+    },
     completion = {
       menu = {
         scrollbar = true,
