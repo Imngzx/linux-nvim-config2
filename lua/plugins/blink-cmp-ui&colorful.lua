@@ -25,7 +25,7 @@ return {
       },
     },
     cmdline = {
-      enabled = false,
+      enabled = true,
     },
     completion = {
       menu = {
