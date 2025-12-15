@@ -232,7 +232,7 @@ return {
         },
         zls = {
           mason = false,
-          cmd = { "/usr/local/bin/zls" },
+          cmd = { "zls" },
           filetypes = { "zig", "zir" },
           root_markers = { "zls.json", "build.zig", ".git" },
           workspace_required = false,
