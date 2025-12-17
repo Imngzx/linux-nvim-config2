@@ -56,7 +56,7 @@ return {
         enabled = true,
       },
       diagnostic = {
-        mode = "icon",
+        mode = "line",
       },
       notification_level = vim.log.levels.OFF,
     }
