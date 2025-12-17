@@ -16,6 +16,7 @@ return {
         },
       },
       ensure_installed = {
+        "lua-language-server",
         "qmlls",
         "emmylua_ls",
         "shfmt",
