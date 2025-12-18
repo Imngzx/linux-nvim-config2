@@ -281,7 +281,7 @@ return {
           -- return date .. " | " .. clock
           --
           --NOTE: enable clock only
-          return string.format("  %02d:%02d %s", hour, time.min, suffix) --
+          return string.format(" %02d:%02d %s", hour, time.min, suffix) --
         end,
       }
     end,
