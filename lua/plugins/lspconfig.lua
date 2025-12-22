@@ -126,7 +126,7 @@ return {
         },
         lua_ls = {
           mason = false, -- set to false if you don't want this server to be installed with mason
-          enabled = true,
+          enabled = false,
           -- Use this to add any additional keymaps
           -- for specific lsp servers
           -- ---@type LazyKeysSpec[]
@@ -238,7 +238,7 @@ return {
           workspace_required = false,
         },
         emmylua_ls = {
-          enabled = false,
+          enabled = true,
           settings = {
             Lua = {
               diagnostics = {

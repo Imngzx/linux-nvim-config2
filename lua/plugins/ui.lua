@@ -49,17 +49,18 @@ return {
           --     winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
           --   },
           -- },
+        },
+        lsp = {
           hover = {
+            enabled = false,
             border = {
               style = "rounded",
             },
           },
-        },
-        lsp = {
           override = {
-            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-            ["vim.lsp.util.stylize_markdown"] = true,
-            ["cmp.entry.get_documentation"] = true,
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = false,
+            ["vim.lsp.util.stylize_markdown"] = false,
+            ["cmp.entry.get_documentation"] = false,
           },
         },
       })
@@ -142,7 +143,7 @@ return {
 
       -- ✅ Add your separators config
       opts.options = vim.tbl_deep_extend("force", opts.options or {}, {
-        -- theme = "palenight",
+        theme = "catppuccin",
         section_separators = { left = "", right = "" }, --
         component_separators = { left = " ", right = " " }, --
         always_divide_middle = true,
@@ -375,6 +376,13 @@ return {
     opts = {
 
       picker = {
+
+        matcher = {
+          cwd_bonus = true,  -- 当前目录加权。更倾向于当前路径下的文件
+          frecency = true,   -- 开启记忆加权。打开次数越多越靠前。
+          sort_empty = true, --  首次打开时预览器就显示排序后的结果
+        },
+        enabled = true,
         hidden = true,
         ignored = true,
         sources = {
@@ -392,6 +400,7 @@ return {
       notifier = { enabled = true },
       indent = { enabled = true },
       quickfile = { enabled = true },
+      animate = { enabled = true, fps = 240 },
       scroll = {
         -- your scroll configuration comes here
         -- or leave it empty to use the default settings
