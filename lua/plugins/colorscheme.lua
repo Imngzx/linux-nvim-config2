@@ -87,7 +87,6 @@ return {
     lazy = true,
     priority = 1000,
     name = "rose-pine",
-    -- priority = 1000,
     config = function()
       require("rose-pine").setup({
         variant = "main",      -- auto, main, moon, or dawn
@@ -229,7 +228,7 @@ return {
     lazy = true,
     priority = 1000,
     opts = {
-      transparent = true,
+      transparent = false,
       terminal_colors = true,
 
       styles = {
@@ -284,7 +283,8 @@ return {
     lazy = true,
     priority = 1000,
     opts = {
-      transparent = true,
+      transparent = false,
+      style = "night",
       styles = {
         sidebars = "transparent",
         floats = "transparent",

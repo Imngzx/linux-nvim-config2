@@ -232,7 +232,7 @@ return {
         },
         zls = {
           mason = false,
-          cmd = { "zls" },
+          cmd = { "zls" }, --must add zls into path, no matter which os
           filetypes = { "zig", "zir" },
           root_markers = { "zls.json", "build.zig", ".git" },
           workspace_required = false,
