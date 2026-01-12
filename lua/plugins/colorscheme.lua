@@ -25,7 +25,7 @@ return {
       },
       auto_integrations = true,
       integrations = {
-        lualine = true,
+        lualine = false,
         aerial = true,
         alpha = true,
         blink_cmp = {
