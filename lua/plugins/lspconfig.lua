@@ -214,11 +214,13 @@ return {
           cmd = {
             "clangd",
             "--background-index",
+            "-j=8", -- NOTE: change the number here depends on your cpu
             "--clang-tidy",
             "--header-insertion=iwyu",
             "--completion-style=detailed",
             "--function-arg-placeholders",
             "--fallback-style=llvm",
+            "--pch-storage=memory",
           },
           init_options = {
             usePlaceholders = true,
@@ -240,24 +242,24 @@ return {
         emmylua_ls = {
           enabled = true,
           settings = {
-            Lua = {
-              diagnostics = {
-                globals = { "vim" },
-              },
-              workspace = {
-                library = {
-                  vim.fn.expand("$VIMRUNTIME/lua"),
-                  vim.fn.expand("$VIMRUNTIME/lua/vim/lsp"),
-                  vim.fn.expand("$VIMRUNTIME"),
-                  vim.fn.expand("$LLS_Addons/luvit/library/uv"),
-                  vim.fn.expand("$LLS_Addons/luvit"),
-                  vim.fn.stdpath("data") .. "/lazy/lazy.nvim/lua/lazy",
-                  "${3rd}/luv/library",
-                },
-                maxPreload = 100000,
-                preloadFileSize = 10000,
-              },
-            },
+            -- Lua = {
+            --   diagnostics = {
+            --     globals = { "vim" },
+            --   },
+            --   workspace = {
+            --     library = {
+            --       vim.fn.expand("$VIMRUNTIME/lua"),
+            --       vim.fn.expand("$VIMRUNTIME/lua/vim/lsp"),
+            --       vim.fn.expand("$VIMRUNTIME"),
+            --       vim.fn.expand("$LLS_Addons/luvit/library/uv"),
+            --       vim.fn.expand("$LLS_Addons/luvit"),
+            --       vim.fn.stdpath("data") .. "/lazy/lazy.nvim/lua/lazy",
+            --       "${3rd}/luv/library",
+            --     },
+            --     maxPreload = 100000,
+            --     preloadFileSize = 10000,
+            --   },
+            -- },
           },
           filetypes = { "lua" },
           root_markers = {
