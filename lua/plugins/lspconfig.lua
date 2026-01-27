@@ -239,6 +239,11 @@ return {
           root_markers = { "zls.json", "build.zig", ".git" },
           workspace_required = false,
         },
+        qmlls = {
+          mason = false,
+          cmd = { "qmlls6" },
+          filetypes = { "qml" }
+        },
         emmylua_ls = {
           enabled = true,
           settings = {
